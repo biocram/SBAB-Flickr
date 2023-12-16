@@ -88,7 +88,11 @@ fun SearchBar(
             singleLine = true,
             leadingIcon = {
                 IconButton(
-                    onClick = {}
+                    onClick = {
+                        if (searchText.isNotEmpty()) {
+                            onSearchClicked(searchText)
+                        }
+                    }
                 ) {
                     Icon(
                         imageVector = Icons.Filled.Search,
