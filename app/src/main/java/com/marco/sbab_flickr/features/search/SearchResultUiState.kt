@@ -1,18 +1,19 @@
 package com.marco.sbab_flickr.features.search
 
-import com.marco.sbab_flickr.models.FlickrItem
+import com.marco.sbab_flickr.models.SearchResult
 
 sealed interface SearchResultUiState {
-    data object Loading : SearchResultUiState
+    data object WaitingForQuery : SearchResultUiState
 
-    /**
-     * The state query is empty or too short to trigger a search.
-     */
-    data object QueryTooShort : SearchResultUiState
+    data object Loading : SearchResultUiState
 
     data object LoadFailed : SearchResultUiState
 
     data class Success(
-        val items: List<FlickrItem> = emptyList(),
+        val items: SearchResult = SearchResult(emptyList()),
     ) : SearchResultUiState
+}
+
+enum class SearchButtonUIState {
+    ENABLED, DISABLED
 }
