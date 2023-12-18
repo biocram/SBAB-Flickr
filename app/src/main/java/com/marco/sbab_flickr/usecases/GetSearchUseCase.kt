@@ -6,13 +6,14 @@ import com.marco.sbab_flickr.models.SearchResultItem
 import com.marco.sbab_flickr.repository.SearchRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
 
 class GetSearchUseCase @Inject constructor(
     private val searchRepository: SearchRepository
 ) {
 
-    operator fun invoke(
+    suspend operator fun invoke(
         searchQuery: String
     ): Flow<SearchResult> =
         try {
@@ -24,5 +25,5 @@ class GetSearchUseCase @Inject constructor(
 }
 
 private fun Flow<List<FlickrItem>>.mapToSearchResults(): Flow<SearchResult> {
-    return emptyFlow()
+    return flowOf(SearchResult(listOf()))
 }

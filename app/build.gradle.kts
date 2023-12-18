@@ -68,9 +68,12 @@ dependencies {
     // Compose Navigation
     implementation("androidx.navigation:navigation-compose:2.7.5")
 
+    //Compose Flow
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
+
     // Hilt
     implementation("com.google.dagger:hilt-android:2.49")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
     // Testing

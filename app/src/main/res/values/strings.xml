@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SBAB_Flickr</string>
-    <string name="search_placeholder">Search</string>
+    <string name="search_placeholder">Search…</string>
+    <string name="search_icon_label">Search</string>
     <string name="search_icon">Search Icon</string>
     <string name="close_icon">Close Icon</string>
 </resources>

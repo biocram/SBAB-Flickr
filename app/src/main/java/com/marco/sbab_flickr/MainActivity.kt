@@ -7,7 +7,9 @@ import androidx.navigation.compose.rememberNavController
 import com.marco.sbab_flickr.navigation.Screen
 import com.marco.sbab_flickr.navigation.SetupNavGraph
 import com.marco.sbab_flickr.ui.theme.SBAB_FlickrTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
