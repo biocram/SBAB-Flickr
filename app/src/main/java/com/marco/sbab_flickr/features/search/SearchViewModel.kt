@@ -19,7 +19,7 @@ private const val SEARCH_QUERY_MIN_LENGTH = 2
 class SearchViewModel @Inject constructor(private val getSearchUseCase: GetSearchUseCase) :
     ViewModel() {
 
-    private var _searchQuery = MutableStateFlow<String>("")
+    private var _searchQuery = MutableStateFlow("")
     val searchQueryState = _searchQuery
 
     private val _searchButtonUIState = MutableStateFlow(SearchButtonUIState.DISABLED)
@@ -48,19 +48,21 @@ class SearchViewModel @Inject constructor(private val getSearchUseCase: GetSearc
         Log.d(SEARCH_TAG, "onSearchQueryStarted(query = $query)")
         _searchResultUiState.value = SearchResultUiState.Loading
         _searchButtonUIState.value = SearchButtonUIState.DISABLED
-        try {
-            viewModelScope.launch {
+
+        viewModelScope.launch {
+            try {
                 getSearchUseCase(query).collect {
                     _searchResultUiState.value = SearchResultUiState.Success(it)
                     if (_searchQuery.value.isQueryValid()) {
                         _searchButtonUIState.value = SearchButtonUIState.ENABLED
                     }
                 }
-            }
-        } catch (e: Exception) {
-            _searchResultUiState.value = SearchResultUiState.LoadFailed
-            if (_searchQuery.value.isQueryValid()) {
-                _searchButtonUIState.value = SearchButtonUIState.ENABLED
+            } catch (e: Exception) {
+                Log.d(SEARCH_TAG, "Exception received from usecase")
+                _searchResultUiState.value = SearchResultUiState.LoadFailed
+                if (_searchQuery.value.isQueryValid()) {
+                    _searchButtonUIState.value = SearchButtonUIState.ENABLED
+                }
             }
         }
     }

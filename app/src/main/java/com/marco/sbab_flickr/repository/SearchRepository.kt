@@ -8,7 +8,8 @@ import javax.inject.Inject
 
 class SearchRepository @Inject constructor() {
     suspend fun searchContents(searchQuery: String): Flow<List<FlickrItem>> {
-        delay(10000)
-        return emptyFlow()
+        delay(4000)
+        throw Exception()
+//        return emptyFlow()
     }
 }

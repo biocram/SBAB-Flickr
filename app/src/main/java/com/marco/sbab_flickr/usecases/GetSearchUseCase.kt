@@ -1,5 +1,7 @@
 package com.marco.sbab_flickr.usecases
 
+import android.util.Log
+import com.marco.sbab_flickr.features.search.SEARCH_TAG
 import com.marco.sbab_flickr.models.FlickrItem
 import com.marco.sbab_flickr.models.SearchResult
 import com.marco.sbab_flickr.models.SearchResultItem
@@ -20,6 +22,7 @@ class GetSearchUseCase @Inject constructor(
             searchRepository.searchContents(searchQuery).mapToSearchResults()
         } catch (e: Exception) {
             // do something with the exception here (analytics, retry, ... ) and then throw it
+            Log.d(SEARCH_TAG, "Exception received from repository")
             throw e
         }
 }
