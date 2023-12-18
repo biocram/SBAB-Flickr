@@ -4,4 +4,7 @@
     <string name="search_icon_label">Search</string>
     <string name="search_icon">Search Icon</string>
     <string name="close_icon">Close Icon</string>
+    <string name="search_empty_query_result">"Sorry, can't find any pictures …"</string>
+    <string name="search_no_query_entered">"Type a query, your pictures will appear here!"</string>
+    <string name="search_error_query">"Oops, somenthiw went wrong …"</string>
 </resources>
