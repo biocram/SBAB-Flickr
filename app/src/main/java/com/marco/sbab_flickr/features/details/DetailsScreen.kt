@@ -1,4 +1,4 @@
-package com.marco.sbab_flickr.presentation
+package com.marco.sbab_flickr.features.details
 
 import androidx.compose.runtime.Composable
 

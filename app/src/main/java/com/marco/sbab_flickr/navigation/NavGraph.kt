@@ -8,8 +8,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.marco.sbab_flickr.presentation.DetailsScreen
-import com.marco.sbab_flickr.presentation.SearchScreen
+import com.marco.sbab_flickr.features.details.DetailsScreen
+import com.marco.sbab_flickr.features.search.SearchScreen
 import com.marco.sbab_flickr.util.Constants.DETAILS_SCREEN_ARGUMENT_KEY
 
 @Composable

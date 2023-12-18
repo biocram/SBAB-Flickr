@@ -1,4 +1,4 @@
-package com.marco.sbab_flickr.presentation
+package com.marco.sbab_flickr.features.search
 
 import android.util.Log
 import androidx.compose.foundation.layout.fillMaxSize
