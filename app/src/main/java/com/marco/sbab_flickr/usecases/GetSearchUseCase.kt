@@ -1,14 +1,11 @@
 package com.marco.sbab_flickr.usecases
 
-import android.util.Log
-import com.marco.sbab_flickr.features.search.SEARCH_TAG
-import com.marco.sbab_flickr.models.FlickrItem
-import com.marco.sbab_flickr.models.SearchResult
-import com.marco.sbab_flickr.models.SearchResultItem
+import com.marco.sbab_flickr.models.network.FlickrSearchData
+import com.marco.sbab_flickr.models.network.Photo
+import com.marco.sbab_flickr.models.ui.UISearchData
+import com.marco.sbab_flickr.models.ui.UISearchItem
 import com.marco.sbab_flickr.repository.SearchRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.emptyFlow
-import kotlinx.coroutines.flow.flowOf
+import com.marco.sbab_flickr.util.Constants
 import javax.inject.Inject
 
 class GetSearchUseCase @Inject constructor(
@@ -17,16 +14,21 @@ class GetSearchUseCase @Inject constructor(
 
     suspend operator fun invoke(
         searchQuery: String
-    ): Flow<SearchResult> =
-        try {
-            searchRepository.searchContents(searchQuery).mapToSearchResults()
-        } catch (e: Exception) {
-            // do something with the exception here (analytics, retry, ... ) and then throw it
-            Log.d(SEARCH_TAG, "Exception received from repository")
-            throw e
-        }
+    ): UISearchData? =
+        searchRepository.searchContents(searchQuery)?.mapToUiModel()
 }
 
-private fun Flow<List<FlickrItem>>.mapToSearchResults(): Flow<SearchResult> {
-    return flowOf(SearchResult(listOf()))
+private fun FlickrSearchData.mapToUiModel(): UISearchData {
+    val searchItems = this.photos.photo.map {
+        UISearchItem(
+            it.id,
+            it.title,
+            generateFlickrUrl(it.server, it.id, it.secret, Constants.FLICKR_THUMBNAIL_150)
+        )
+    }
+    return UISearchData(searchItems)
+}
+
+fun generateFlickrUrl(serverId: String, id: String, secret: String, sizeSuffix: String): String {
+    return Constants.FLICKR_IMAGE_URL.format(serverId, id, secret, sizeSuffix)
 }
