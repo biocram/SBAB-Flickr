@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">SBAB_Flickr</string>
     <string name="search_placeholder">Search…</string>
-    <string name="search_icon_label">Search</string>
     <string name="search_icon">Search Icon</string>
     <string name="close_icon">Close Icon</string>
-    <string name="search_empty_query_result">"Sorry, can't find any pictures …"</string>
     <string name="search_no_query_entered">"Type a query, your pictures will appear here!"</string>
-    <string name="search_error_query">"Oops, somenthiw went wrong …"</string>
+    <string name="search_error_query">"Oops, something went wrong …"</string>
+    <string name="search_empty_query">"Oh No! I couldn't find any images for you query …"</string>
 </resources>
