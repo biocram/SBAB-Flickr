@@ -6,6 +6,8 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 
+// Created with Material Design theme builder: https://m3.material.io/theme-builder
+
 
 private val LightColors = lightColorScheme(
     primary = md_theme_light_primary,

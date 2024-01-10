@@ -151,7 +151,7 @@ fun SearchItemThumbnail(
 fun SearchResultContentPreview() {
     SBAB_FlickrTheme {
         SearchResultContent(
-            UIState.WaitingForQuery,
+            UIState.LoadFailed,
         ) { }
     }
 }
